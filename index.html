@@ -273,13 +273,10 @@
 
     /* ── STORY SECTION ── */
     .story {
-      padding: 120px 0;
-      display: grid;
-      grid-template-columns: 200px 1fr 1fr;
-      gap: 0;
       max-width: 1200px;
       margin: 0 auto;
       padding: 120px 64px;
+      border-top: 1px solid var(--light-gray);
     }
 
     .story-label {
@@ -288,11 +285,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gray);
-      padding-top: 8px;
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
-      height: fit-content;
-      align-self: start;
+      margin-bottom: 20px;
+    }
+
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
     }
 
     .story-headline {
@@ -301,7 +300,6 @@
       font-weight: 700;
       line-height: 1.15;
       color: var(--black);
-      padding-right: 80px;
     }
 
     .story-headline em {
@@ -382,6 +380,7 @@
       padding: 120px 64px;
       max-width: 1200px;
       margin: 0 auto;
+      border-top: 1px solid var(--light-gray);
     }
 
     .demo-header {
@@ -670,7 +669,11 @@
 
     /* ── CONTACT / CTA ── */
     .contact {
+      background: var(--yellow);
       padding: 120px 64px;
+    }
+
+    .contact-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
@@ -687,15 +690,10 @@
       color: var(--black);
     }
 
-    .contact-title span {
-      color: var(--yellow);
-      -webkit-text-stroke: 1px var(--black);
-    }
-
     .contact-body {
       font-size: 17px;
       font-weight: 300;
-      color: var(--gray);
+      color: var(--off-black);
       line-height: 1.75;
       margin-bottom: 40px;
     }
@@ -715,7 +713,8 @@
     }
 
     .contact-email:hover {
-      background: var(--yellow);
+      background: var(--black);
+      color: var(--yellow);
       padding: 20px 16px;
     }
 
@@ -789,9 +788,8 @@
       .hero-right { height: 400px; }
       .hero-number { font-size: 80px; bottom: 24px; right: 24px; }
 
-      .story { grid-template-columns: 1fr; padding: 80px 28px; gap: 40px; }
-      .story-label { writing-mode: horizontal-tb; transform: none; }
-      .story-headline { padding-right: 0; }
+      .story { padding: 80px 28px; }
+      .story-content { grid-template-columns: 1fr; gap: 32px; }
 
       .creds-grid { grid-template-columns: 1fr 1fr; }
       .creds { padding: 60px 28px; }
@@ -808,7 +806,8 @@
       .pricing { padding: 80px 28px; }
       .pricing-inner { grid-template-columns: 1fr; gap: 40px; }
 
-      .contact { grid-template-columns: 1fr; gap: 48px; padding: 80px 28px; }
+      .contact { padding: 80px 28px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       footer { padding: 32px 28px; flex-direction: column; gap: 20px; text-align: center; }
     }
 
@@ -834,7 +833,8 @@
 
       .ticker-item { font-size: 10px; padding: 0 24px; }
 
-      .story { padding: 60px 20px; gap: 28px; }
+      .story { padding: 60px 20px; }
+      .story-content { gap: 24px; }
       .story-headline { font-size: 32px; }
       .story-body p { font-size: 15px; }
 
@@ -863,7 +863,8 @@
       .price-card { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
       .price-card-amount { font-size: 32px; }
 
-      .contact { padding: 60px 20px; gap: 36px; }
+      .contact { padding: 60px 20px; }
+      .contact-inner { gap: 36px; }
       .contact-title { font-size: 36px; }
       .contact-body { font-size: 15px; }
       .contact-email { font-size: 13px; padding: 16px 0; }
@@ -944,14 +945,16 @@
   <!-- STORY -->
   <section class="story" id="story">
     <div class="story-label">Origin</div>
-    <div class="story-headline reveal">
-      I help Seattle businesses<br />
-      <em>make more money with AI.</em>
-    </div>
-    <div class="story-body reveal">
+    <div class="story-content">
+      <div class="story-headline reveal">
+        I help Seattle businesses<br />
+        <em>make more money with AI.</em>
+      </div>
+      <div class="story-body reveal">
       <p>Most small business owners know they should be using AI. Almost none of them are — not because they don't want to, but because figuring out what to actually build and how to build it is a full-time job on top of the full-time job they already have.</p>
       <p>I come in, learn how your business actually operates, and build AI tools that either bring in more revenue or cut down the work that's eating your time. Customer communications, scheduling, follow-ups, back-office automation — whatever the biggest drain is, that's where we start.</p>
       <p>I do this as someone currently running a service business in Seattle, not as a consultant who's only ever worked in software. That difference matters.</p>
+      </div>
     </div>
   </section>
 
@@ -1047,12 +1050,14 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div>
-      <h2 class="contact-title reveal">Let's <br /><span>talk.</span></h2>
-    </div>
-    <div class="reveal">
-      <p class="contact-body">Tell me what's eating your time or costing you customers. If AI can help, I'll tell you honestly. If it can't, I'll tell you that too. No pitch, no deck — just a real conversation about your business.</p>
-      <a href="mailto:tyler@codeandkit.com" class="contact-email">tyler@codeandkit.com →</a>
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-title reveal">Let's <br />talk.</h2>
+      </div>
+      <div class="reveal">
+        <p class="contact-body">Tell me what's eating your time or costing you customers. If AI can help, I'll tell you honestly. If it can't, I'll tell you that too. No pitch, no deck — just a real conversation about your business.</p>
+        <a href="mailto:tyler@codeandkit.com" class="contact-email">tyler@codeandkit.com →</a>
+      </div>
     </div>
   </section>
 
