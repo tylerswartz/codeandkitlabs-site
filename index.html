@@ -4,6 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code & Kit Labs</title>
+  <meta name="description" content="AI consulting for Seattle local businesses. I build AI tools that bring in more revenue or cut down the work that's eating your time." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://codeandkit.com/" />
+  <meta property="og:title" content="Code & Kit Labs" />
+  <meta property="og:description" content="AI consulting for Seattle local businesses. I build AI tools that bring in more revenue or cut down the work that's eating your time." />
+  <meta property="og:image" content="https://codeandkit.com/images/tyler-van.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Code & Kit Labs" />
+  <meta name="twitter:description" content="AI consulting for Seattle local businesses. I build AI tools that bring in more revenue or cut down the work that's eating your time." />
+  <meta name="twitter:image" content="https://codeandkit.com/images/tyler-van.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -199,40 +218,12 @@
       justify-content: center;
     }
 
-    /* Photo placeholder — swap with real img */
-    .hero-photo-placeholder {
+    /* Hero photo */
+    .hero-photo {
       width: 100%;
-      height: 85%;
-      background: var(--yellow-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      border-top: 3px solid rgba(0,0,0,0.08);
-    }
-
-    .photo-hint {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.3);
-      text-align: center;
-    }
-
-    .photo-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .photo-icon svg {
-      opacity: 0.25;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
     }
 
     /* Hero decorative number */
@@ -820,6 +811,68 @@
       .contact { grid-template-columns: 1fr; gap: 48px; padding: 80px 28px; }
       footer { padding: 32px 28px; flex-direction: column; gap: 20px; text-align: center; }
     }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      nav { padding: 16px 20px; }
+      .nav-logo { font-size: 11px; }
+
+      .hero-left { padding: 100px 20px 48px; }
+      .hero-eyebrow { font-size: 10px; margin-bottom: 16px; }
+      .hero-name { font-size: 42px; }
+      .hero-role { font-size: 16px; margin-bottom: 28px; }
+      .hero-bio { font-size: 15px; margin-bottom: 36px; }
+      .hero-right { height: 320px; }
+      .hero-number { font-size: 60px; bottom: 16px; right: 16px; }
+
+      .hero-actions { flex-direction: column; gap: 12px; }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 16px 24px;
+      }
+
+      .ticker-item { font-size: 10px; padding: 0 24px; }
+
+      .story { padding: 60px 20px; gap: 28px; }
+      .story-headline { font-size: 32px; }
+      .story-body p { font-size: 15px; }
+
+      .creds { padding: 48px 20px; }
+      .creds-grid { grid-template-columns: 1fr; }
+      .cred-item { padding: 32px 0; border-left: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .cred-item:last-child { border-bottom: none; }
+      .cred-number { font-size: 42px; }
+
+      .demo { padding: 60px 20px; }
+      .demo-title { font-size: 28px; }
+      .demo-card { padding: 28px 20px; }
+      .demo-card-title { font-size: 24px; }
+      .demo-channel { padding: 14px 16px; }
+      .demo-channel-text { font-size: 12px; }
+
+      .how { padding: 60px 20px; }
+      .section-title { font-size: 28px; margin-bottom: 48px; }
+      .step { padding: 32px 0 !important; }
+      .step-num { font-size: 56px; }
+      .step-title { font-size: 17px; }
+      .step-body { font-size: 14px; }
+
+      .pricing { padding: 60px 20px; }
+      .pricing-title { font-size: 28px; }
+      .price-card { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .price-card-amount { font-size: 32px; }
+
+      .contact { padding: 60px 20px; gap: 36px; }
+      .contact-title { font-size: 36px; }
+      .contact-body { font-size: 15px; }
+      .contact-email { font-size: 13px; padding: 16px 0; }
+
+      footer { padding: 28px 20px; }
+      .footer-logo { font-size: 11px; }
+      .footer-links { gap: 20px; }
+      .footer-links a { font-size: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -852,16 +905,11 @@
 
     <div class="hero-right">
       <div class="hero-photo-container">
-        <!-- SWAP THIS with: <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;" alt="Tyler Swartz"> -->
-        <div class="hero-photo-placeholder">
-          <div class="photo-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="8" r="4" fill="black"/>
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="black"/>
-            </svg>
-          </div>
-          <span class="photo-hint">Your photo goes here</span>
-        </div>
+        <img
+          src="images/tyler-van.jpg"
+          alt="Tyler Swartz standing in front of the Speedy's E-Bike Rescue van"
+          class="hero-photo"
+        />
       </div>
       <div class="hero-number">01</div>
     </div>
@@ -1015,8 +1063,8 @@
     <span class="footer-logo">Code & Kit Labs</span>
     <span class="footer-note">Seattle, WA · 2026</span>
     <ul class="footer-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms</a></li>
+      <li><a href="/privacy.html">Privacy Policy</a></li>
+      <li><a href="/terms.html">Terms</a></li>
     </ul>
   </footer>
 
