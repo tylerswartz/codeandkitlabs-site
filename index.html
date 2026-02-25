@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code & Kit Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #FFD600;
+      --yellow-dark: #E6C000;
+      --black: #0A0A0A;
+      --off-black: #1A1A1A;
+      --off-white: #F7F4EE;
+      --gray: #6B6B6B;
+      --light-gray: #E8E5DE;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mix-blend-mode: multiply;
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--yellow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 140px 64px 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--off-black);
+      opacity: 0.55;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--black);
+      margin-bottom: 8px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-role {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2.2vw, 28px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--off-black);
+      opacity: 0.6;
+      margin-bottom: 40px;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .hero-bio {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--off-black);
+      max-width: 440px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .hero-bio strong {
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--off-black);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--black);
+      padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--black);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: var(--yellow);
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .hero-photo-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Photo placeholder — swap with real img */
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 85%;
+      background: var(--yellow-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-top: 3px solid rgba(0,0,0,0.08);
+    }
+
+    .photo-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .photo-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-icon svg {
+      opacity: 0.25;
+    }
+
+    /* Hero decorative number */
+    .hero-number {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      font-family: 'Playfair Display', serif;
+      font-size: 140px;
+      font-weight: 900;
+      color: rgba(0,0,0,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--black);
+      color: var(--yellow);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 24s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 48px;
+    }
+
+    .ticker-sep {
+      opacity: 0.35;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── STORY SECTION ── */
+    .story {
+      padding: 120px 0;
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 64px;
+    }
+
+    .story-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding-top: 8px;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      height: fit-content;
+      align-self: start;
+    }
+
+    .story-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      padding-right: 80px;
+    }
+
+    .story-headline em {
+      font-style: italic;
+      color: var(--gray);
+    }
+
+    .story-body {
+      padding-top: 8px;
+    }
+
+    .story-body p {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--off-black);
+      margin-bottom: 24px;
+    }
+
+    .story-body p:last-child { margin-bottom: 0; }
+
+    .story-body strong {
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    /* ── CREDS / FACTS ── */
+    .creds {
+      background: var(--black);
+      color: var(--off-white);
+      padding: 80px 64px;
+    }
+
+    .creds-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .cred-item {
+      padding: 48px 40px;
+      border-left: 2px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
+    }
+
+    .cred-item:first-child { border-left: none; }
+    .cred-item:hover { background: rgba(255,214,0,0.04); }
+
+    .cred-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .cred-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+
+    .cred-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* ── DEMO SECTION ── */
+    .demo {
+      padding: 120px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+
+    .demo-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .demo-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+    }
+
+    .demo-desc {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.75;
+      align-self: end;
+    }
+
+    .demo-card {
+      background: var(--yellow);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: -6px;
+      bottom: -6px;
+      background: var(--black);
+      z-index: -1;
+    }
+
+    .demo-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+
+    .demo-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .demo-card-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--off-black);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .demo-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .demo-channel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.07);
+    }
+
+    .demo-channel-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .demo-channel-icon svg {
+      fill: var(--yellow);
+    }
+
+    .demo-channel-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--black);
+    }
+
+    .demo-channel-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(0,0,0,0.5);
+      font-weight: 300;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      background: var(--off-white);
+      padding: 120px 64px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .how-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 80px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .step {
+      padding: 48px 40px 48px 0;
+      border-right: 1px solid var(--light-gray);
+      padding-right: 48px;
+    }
+
+    .step:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 48px;
+    }
+
+    .step:nth-child(2) {
+      padding-left: 48px;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .step-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ── PRICING SECTION ── */
+    .pricing {
+      background: var(--yellow);
+      padding: 100px 64px;
+    }
+
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pricing-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+
+    .pricing-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .pricing-note {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--off-black);
+      line-height: 1.7;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .price-card {
+      background: var(--black);
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .price-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+
+    .price-card-name {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--off-white);
+    }
+
+    .price-card-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+
+    .price-card-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,214,0,0.5);
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    /* ── CONTACT / CTA ── */
+    .contact {
+      padding: 120px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--black);
+    }
+
+    .contact-title span {
+      color: var(--yellow);
+      -webkit-text-stroke: 1px var(--black);
+    }
+
+    .contact-body {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .contact-email {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      text-decoration: none;
+      padding: 20px 0;
+      border-top: 1.5px solid var(--black);
+      border-bottom: 1.5px solid var(--black);
+      margin-bottom: 32px;
+      transition: background 0.15s, padding 0.15s;
+    }
+
+    .contact-email:hover {
+      background: var(--yellow);
+      padding: 20px 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 40px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--yellow); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 28px; }
+      .nav-links { display: none; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 28px 60px; }
+      .hero-right { height: 400px; }
+      .hero-number { font-size: 80px; bottom: 24px; right: 24px; }
+
+      .story { grid-template-columns: 1fr; padding: 80px 28px; gap: 40px; }
+      .story-label { writing-mode: horizontal-tb; transform: none; }
+      .story-headline { padding-right: 0; }
+
+      .creds-grid { grid-template-columns: 1fr 1fr; }
+      .creds { padding: 60px 28px; }
+
+      .demo, .how { padding: 80px 28px; }
+      .how { padding: 80px 28px; }
+      .demo-header { grid-template-columns: 1fr; gap: 24px; }
+      .demo-card { grid-template-columns: 1fr; gap: 40px; padding: 36px 28px; }
+
+      .steps { grid-template-columns: 1fr; }
+      .step { border-right: none; border-bottom: 1px solid var(--light-gray); padding: 40px 0 !important; }
+      .step:last-child { border-bottom: none; }
+
+      .pricing { padding: 80px 28px; }
+      .pricing-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .contact { grid-template-columns: 1fr; gap: 48px; padding: 80px 28px; }
+      footer { padding: 32px 28px; flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Code & Kit Labs</a>
+    <ul class="nav-links">
+      <li><a href="#story">About</a></li>
+      <li><a href="#demo">Work</a></li>
+      <li><a href="#how">How</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Seattle, WA · AI for Local Business</div>
+      <h1 class="hero-name">Tyler Swartz.</h1>
+      <div class="hero-role">Small business operator. Also building AI for yours.</div>
+      <p class="hero-bio">
+        I spent a decade as a PM in tech — including at Reddit — then left to run <strong>Speedy's E-Bike Rescue</strong> in Seattle. When I started building AI tools to handle customer communications and back-office work, I realized other local businesses needed the same thing. Now I build it for them.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Let's talk →</a>
+        <a href="#demo" class="btn-secondary">See an example</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-container">
+        <!-- SWAP THIS with: <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;" alt="Tyler Swartz"> -->
+        <div class="hero-photo-placeholder">
+          <div class="photo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8" r="4" fill="black"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="black"/>
+            </svg>
+          </div>
+          <span class="photo-hint">Your photo goes here</span>
+        </div>
+      </div>
+      <div class="hero-number">01</div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span class="ticker-item">AI Implementation</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Customer Communications</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Seattle Local Businesses</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Workflow Automation</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Built by a Business Owner</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">AI Implementation</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Customer Communications</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Seattle Local Businesses</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Workflow Automation</span>
+      <span class="ticker-item ticker-sep">✦</span>
+      <span class="ticker-item">Built by a Business Owner</span>
+      <span class="ticker-item ticker-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-label">Origin</div>
+    <div class="story-headline reveal">
+      I help Seattle businesses<br />
+      <em>make more money with AI.</em>
+    </div>
+    <div class="story-body reveal">
+      <p>Most small business owners know they should be using AI. Almost none of them are — not because they don't want to, but because figuring out what to actually build and how to build it is a full-time job on top of the full-time job they already have.</p>
+      <p>I come in, learn how your business actually operates, and build AI tools that either bring in more revenue or cut down the work that's eating your time. Customer communications, scheduling, follow-ups, back-office automation — whatever the biggest drain is, that's where we start.</p>
+      <p>I do this as someone currently running a service business in Seattle, not as a consultant who's only ever worked in software. That difference matters.</p>
+    </div>
+  </section>
+
+  <!-- CREDS -->
+  <div class="creds">
+    <div class="creds-grid">
+      <div class="cred-item reveal">
+        <div class="cred-number">10+</div>
+        <div class="cred-label">Years in tech</div>
+        <div class="cred-desc">PM at Reddit and other software companies. I know how to build things that actually work.</div>
+      </div>
+      <div class="cred-item reveal">
+        <div class="cred-number">1</div>
+        <div class="cred-label">Business still running</div>
+        <div class="cred-desc">Speedy's E-Bike Rescue, the AAA for e-bikes in Seattle. I use AI in my own operation every day.</div>
+      </div>
+      <div class="cred-item reveal">
+        <div class="cred-number">$0</div>
+        <div class="cred-label">To start the conversation</div>
+        <div class="cred-desc">We talk about your business first. If there's a good fit, I'll tell you exactly what I'd build and why.</div>
+      </div>
+      <div class="cred-item reveal">
+        <div class="cred-number">Real</div>
+        <div class="cred-label">Results, not decks</div>
+        <div class="cred-desc">I build working tools, not strategy documents. You'll see something tangible before you spend a dollar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMO -->
+  <section class="demo" id="demo">
+    <div class="demo-header">
+      <div>
+        <div class="demo-label reveal">Example Work</div>
+        <h2 class="demo-title reveal">One thing I've built:<br />an after-hours AI agent.</h2>
+      </div>
+      <p class="demo-desc reveal">I built this for my own business first, then for local bike shops. A customer texts or calls after hours — the AI answers, knows the shop's pricing and hours, and logs any scheduling requests for the morning. This is one example of the kind of thing I build.</p>
+    </div>
+
+    <div class="demo-card reveal">
+      <div>
+        <div class="demo-card-label">Try the demo</div>
+        <h3 class="demo-card-title">Text or call and see it in action.</h3>
+        <p class="demo-card-body">I've set up a demo for a fictional bike shop — Cascade Bicycle Works. Ask about hours, pricing, or scheduling a service. It'll feel like you're talking to a real business.</p>
+        <a href="#contact" class="btn-primary">Talk about your business →</a>
+      </div>
+      <div class="demo-channels">
+        <div class="demo-channel">
+          <div class="demo-channel-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <div>
+            <div class="demo-channel-text">Text (206) 210-2714</div>
+            <div class="demo-channel-sub">Ask about pricing or hours</div>
+          </div>
+        </div>
+        <div class="demo-channel">
+          <div class="demo-channel-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </div>
+          <div>
+            <div class="demo-channel-text">Call (206) 210-2714</div>
+            <div class="demo-channel-sub">Ask to schedule a service drop-off</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <div class="section-label reveal">How it works</div>
+      <h2 class="section-title reveal">Simple process.<br/>No fluff.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">We talk about your business</h3>
+          <p class="step-body">Not a sales call — a real conversation about how your business operates, where time is being wasted, and where revenue is slipping through the cracks. I ask a lot of questions.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3 class="step-title">I identify what to build</h3>
+          <p class="step-body">Based on what I hear, I'll tell you exactly what AI tools would have the biggest impact — and what I'd charge to build and maintain them. No vague proposals.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3 class="step-title">I build it and keep it running</h3>
+          <p class="step-body">I handle the implementation. I keep it maintained. If something breaks or your business changes, I fix it. You stay focused on running your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div>
+      <h2 class="contact-title reveal">Let's grab<br /><span>coffee.</span></h2>
+    </div>
+    <div class="reveal">
+      <p class="contact-body">Tell me what's eating your time or costing you customers. If AI can help, I'll tell you honestly. If it can't, I'll tell you that too. No pitch, no deck — just a real conversation about your business.</p>
+      <a href="mailto:hello@codeandkit.com" class="contact-email">hello@codeandkit.com →</a>
+      <a href="#demo" class="btn-secondary" style="display:inline-block;">Or try the demo first</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Code & Kit Labs</span>
+    <span class="footer-note">Seattle, WA · 2026</span>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms</a></li>
+    </ul>
+  </footer>
+
+  
+</body>
+</html>
