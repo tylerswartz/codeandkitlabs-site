@@ -159,9 +159,17 @@
 
     .hero-actions {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 16px;
-      flex-wrap: wrap;
       animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    .hero-cta-note {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--off-black);
+      opacity: 0.7;
     }
 
     .btn-primary {
@@ -713,6 +721,17 @@
       padding: 20px 16px;
     }
 
+    .contact .btn-primary {
+      margin-bottom: 16px;
+    }
+
+    .contact-cta-note {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--off-black);
+      opacity: 0.7;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--black);
@@ -892,8 +911,8 @@
         I spent 10 years building software products at companies like Reddit. Then I left to run my own service business in Seattle. I've built AI tools that handle customer communications, capture after-hours leads, and automate the back-office work nobody wants to do. Now I use what I know to help other local businesses make more money with AI.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Let's talk →</a>
-        <!-- <a href="#demo" class="btn-secondary">See an example</a> -->
+        <a href="https://calendly.com/speedys-e-bike-rescue/call-with-tyler" class="btn-primary" target="_blank">Book a 30-min Call →</a>
+        <p class="hero-cta-note">You'll get a written proposal after — nothing to decide on the call.</p>
       </div>
     </div>
 
@@ -1047,7 +1066,8 @@
       </div>
       <div class="reveal">
         <p class="contact-body">Start with a 30-minute call. No pitch on the call — just questions. I'll follow up with a proposal doc laying out exactly what I'd build and what I'd charge. You take it or leave it.</p>
-        <a href="mailto:tyler@codeandkit.com" class="contact-email">tyler@codeandkit.com →</a>
+        <a href="https://calendly.com/speedys-e-bike-rescue/call-with-tyler" class="btn-primary" target="_blank">Book a 30-min Call →</a>
+        <p class="contact-cta-note">You'll get a written proposal after — nothing to decide on the call.</p>
       </div>
     </div>
   </section>
