@@ -287,18 +287,13 @@
       margin-bottom: 20px;
     }
 
-    .story-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-    }
-
     .story-headline {
       font-family: 'Playfair Display', serif;
       font-size: clamp(36px, 4vw, 56px);
       font-weight: 700;
       line-height: 1.15;
       color: var(--black);
+      margin-bottom: 48px;
     }
 
     .story-headline em {
@@ -307,7 +302,6 @@
     }
 
     .story-body {
-      padding-top: 8px;
     }
 
     .story-body p {
@@ -383,11 +377,7 @@
     }
 
     .demo-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
       margin-bottom: 64px;
-      align-items: end;
     }
 
     .demo-label {
@@ -405,6 +395,7 @@
       font-weight: 700;
       line-height: 1.15;
       color: var(--black);
+      margin-bottom: 48px;
     }
 
     .demo-desc {
@@ -412,7 +403,6 @@
       font-weight: 300;
       color: var(--off-black);
       line-height: 1.8;
-      align-self: end;
     }
 
     .demo-card {
@@ -790,14 +780,11 @@
       .hero-number { font-size: 80px; bottom: 24px; right: 24px; }
 
       .story { padding: 80px 28px; }
-      .story-content { grid-template-columns: 1fr; gap: 32px; }
 
       .creds-grid { grid-template-columns: 1fr 1fr; }
       .creds { padding: 60px 28px; }
 
       .demo, .how { padding: 80px 28px; }
-      .how { padding: 80px 28px; }
-      .demo-header { grid-template-columns: 1fr; gap: 24px; }
       .demo-card { grid-template-columns: 1fr; gap: 40px; padding: 36px 28px; }
 
       .steps { grid-template-columns: 1fr; }
@@ -835,7 +822,6 @@
       .ticker-item { font-size: 10px; padding: 0 24px; }
 
       .story { padding: 60px 20px; }
-      .story-content { gap: 24px; }
       .story-headline { font-size: 32px; }
       .story-body p { font-size: 15px; }
 
@@ -946,14 +932,12 @@
   <!-- STORY -->
   <section class="story" id="story">
     <div class="story-label">Origin</div>
-    <div class="story-content">
-      <div class="story-headline reveal">
-        77% of small business owners say AI would transform their business. 5% are actually using it. <em>I close that gap.</em>
-      </div>
-      <div class="story-body reveal">
+    <h2 class="story-headline reveal">
+      77% of small business owners say AI would transform their business. 5% are actually using it. <em>I close that gap.</em>
+    </h2>
+    <div class="story-body reveal">
       <p>Most local business owners waste 10-15 hours a week on work AI could do in seconds — answering the same customer questions, chasing follow-ups, manually logging requests. That's revenue you're not generating while you're doing admin.</p>
       <p>I come in, identify the highest-value thing to automate, build it, and maintain it. You keep the time. You keep the revenue it recovers.</p>
-      </div>
     </div>
   </section>
 
@@ -986,10 +970,8 @@
   <!-- DEMO -->
   <section class="demo" id="demo">
     <div class="demo-header">
-      <div>
-        <div class="demo-label reveal">Example Work</div>
-        <h2 class="demo-title reveal">One thing I've built:<br />an after-hours AI agent.</h2>
-      </div>
+      <div class="demo-label reveal">Example Work</div>
+      <h2 class="demo-title reveal">One thing I've built:<br />an after-hours AI agent.</h2>
       <p class="demo-desc reveal">Don't take my word for it — test it. I built an after-hours AI agent for local bike shops. Call the number below at any hour. It will answer immediately, handle your question, and capture any service request. A real business is running this right now. I can build you one too.</p>
     </div>
 
