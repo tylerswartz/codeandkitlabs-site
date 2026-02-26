@@ -272,10 +272,13 @@
 
     /* ── STORY SECTION ── */
     .story {
-      max-width: 1200px;
-      margin: 0 auto;
       padding: 120px 64px;
       border-top: 1px solid var(--light-gray);
+    }
+
+    .story-inner {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .story-label {
@@ -371,9 +374,12 @@
     /* ── DEMO SECTION ── */
     .demo {
       padding: 120px 64px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .demo-inner {
       max-width: 1200px;
       margin: 0 auto;
-      border-top: 1px solid var(--light-gray);
     }
 
     .demo-header {
@@ -931,13 +937,15 @@
 
   <!-- STORY -->
   <section class="story" id="story">
-    <div class="story-label">Origin</div>
-    <h2 class="story-headline reveal">
-      77% of small business owners say AI would transform their business. 5% are actually using it. <em>I close that gap.</em>
-    </h2>
-    <div class="story-body reveal">
-      <p>Most local business owners waste 10-15 hours a week on work AI could do in seconds — answering the same customer questions, chasing follow-ups, manually logging requests. That's revenue you're not generating while you're doing admin.</p>
-      <p>I come in, identify the highest-value thing to automate, build it, and maintain it. You keep the time. You keep the revenue it recovers.</p>
+    <div class="story-inner">
+      <div class="story-label">What I Do</div>
+      <h2 class="story-headline reveal">
+        77% of small business owners say AI would transform their business. 5% are actually using it. <em>I close that gap.</em>
+      </h2>
+      <div class="story-body reveal">
+        <p>Most local business owners waste 10-15 hours a week on work AI could do in seconds — answering the same customer questions, chasing follow-ups, manually logging requests. That's revenue you're not generating while you're doing admin.</p>
+        <p>I come in, identify the highest-value thing to automate, build it, and maintain it. You keep the time. You keep the revenue it recovers.</p>
+      </div>
     </div>
   </section>
 
@@ -969,35 +977,37 @@
  -->
   <!-- DEMO -->
   <section class="demo" id="demo">
-    <div class="demo-header">
-      <div class="demo-label reveal">Example Work</div>
-      <h2 class="demo-title reveal">One thing I've built:<br />an after-hours AI agent.</h2>
-      <p class="demo-desc reveal">Don't take my word for it — test it. I built an after-hours AI agent for local bike shops. Call the number below at any hour. It will answer immediately, handle your question, and capture any service request. A real business is running this right now. I can build you one too.</p>
-    </div>
-
-    <div class="demo-card reveal">
-      <div>
-        <div class="demo-card-label">Try the demo</div>
-        <h3 class="demo-card-title">Text or call and see it in action.</h3>
-        <p class="demo-card-body">I've set up a demo for a fictional bike shop — City Bikes. Ask about hours, pricing, or scheduling a service. It'll feel like you're talking to a real business.</p>
+    <div class="demo-inner">
+      <div class="demo-header">
+        <div class="demo-label reveal">Example Work</div>
+        <h2 class="demo-title reveal">One thing I've built:<br />an after-hours AI agent.</h2>
+        <p class="demo-desc reveal">Don't take my word for it — test it. I built an after-hours AI agent for local bike shops. Call the number below at any hour. It will answer immediately, handle your question, and capture any service request. A real business is running this right now. I can build you one too.</p>
       </div>
-      <div class="demo-channels">
-        <div class="demo-channel">
-          <div class="demo-channel-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-          </div>
-          <div>
-            <div class="demo-channel-text">Text (206) 210-2714</div>
-            <div class="demo-channel-sub">Ask about pricing or hours</div>
-          </div>
+
+      <div class="demo-card reveal">
+        <div>
+          <div class="demo-card-label">Try the demo</div>
+          <h3 class="demo-card-title">Text or call and see it in action.</h3>
+          <p class="demo-card-body">I've set up a demo for a fictional bike shop — City Bikes. Ask about hours, pricing, or scheduling a service. It'll feel like you're talking to a real business.</p>
         </div>
-        <div class="demo-channel">
-          <div class="demo-channel-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        <div class="demo-channels">
+          <div class="demo-channel">
+            <div class="demo-channel-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            </div>
+            <div>
+              <div class="demo-channel-text">Text (206) 210-2714</div>
+              <div class="demo-channel-sub">Ask about pricing or hours</div>
+            </div>
           </div>
-          <div>
-            <div class="demo-channel-text">Call (206) 210-2714</div>
-            <div class="demo-channel-sub">Ask to schedule a service drop-off</div>
+          <div class="demo-channel">
+            <div class="demo-channel-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            </div>
+            <div>
+              <div class="demo-channel-text">Call (206) 210-2714</div>
+              <div class="demo-channel-sub">Ask to schedule a service drop-off</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1008,7 +1018,7 @@
   <section class="how" id="how">
     <div class="how-inner">
       <div class="section-label reveal">How it works</div>
-      <h2 class="section-title reveal">Simple process.<br/>No fluff.</h2>
+      <h2 class="section-title reveal">Simple process. No fluff.</h2>
       <div class="steps">
         <div class="step reveal">
           <div class="step-num">01</div>
