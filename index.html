@@ -689,6 +689,18 @@
     .contact {
       background: var(--yellow);
       padding: 120px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-photo {
+      position: absolute;
+      right: 5%;
+      bottom: -10%;
+      height: 90%;
+      width: auto;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .contact-inner {
@@ -836,6 +848,7 @@
 
       .contact { padding: 80px 28px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-photo { display: none; }
       footer { padding: 32px 28px; flex-direction: column; gap: 20px; text-align: center; }
     }
 
@@ -1072,6 +1085,7 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
+    <img src="images/tyler_transparent.png" alt="Tyler Swartz" class="contact-photo" />
     <div class="contact-inner">
       <div>
         <h2 class="contact-title reveal">Let's talk.</h2>
